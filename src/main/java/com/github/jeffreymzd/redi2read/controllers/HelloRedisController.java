@@ -1,5 +1,6 @@
 package com.github.jeffreymzd.redi2read.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -14,9 +15,9 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/redis")
+@RequiredArgsConstructor
 public class HelloRedisController {
-    @Autowired
-    private RedisTemplate<String, String> template;
+    private final RedisTemplate<String, String> template;
 
     private static final String STRING_KEY_PREFIX = "redi2read:strings:"; // prefix the keys that we write to Redis
 
