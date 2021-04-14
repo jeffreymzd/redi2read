@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisHash;
 /**
  * Created by jeffreymzd on 4/13/21
  */
+@Builder
 @Data // adds @ToString, @EqualsAndHashCode, @Getter/@Setter, and a @RequiredArgsConstructor
 @RedisHash // to map an instance of Role to a Redis Hash
 public class Role {
