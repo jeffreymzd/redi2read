@@ -22,12 +22,15 @@ public class CreateRoles implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(">>> Run from the CreateRoles CommandLineRunner...");
+        log.info(">>>> Run from the CreateRoles CommandLineRunner...");
+        roleRepository.deleteAll();
         if (roleRepository.count() == 0) {
             Role adminRole = Role.builder().name("admin").build();
             Role customerRole = Role.builder().name("customer").build();
+            Role superuserRole = Role.builder().name("superuser").build();
             roleRepository.save(adminRole);
             roleRepository.save(customerRole);
+            roleRepository.save(superuserRole);
             log.info(">>>> Created admin and customer roles ...");
         }
     }

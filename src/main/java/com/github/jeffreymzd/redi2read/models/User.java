@@ -1,8 +1,7 @@
 package com.github.jeffreymzd.redi2read.models;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
 import org.springframework.data.annotation.Transient;
@@ -18,6 +17,7 @@ import java.util.Set;
 /**
  * Created by jeffreymzd on 4/13/21
  */
+@JsonIgnoreProperties(value = { "password", "passwordConfirm" }, allowSetters = true) // filter out from restful api return - by allowing only setters
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(onlyExplicitlyIncluded = true)
 @Data
@@ -37,7 +37,7 @@ public class User {
     @Email
     @EqualsAndHashCode.Include
     @ToString.Include
-    @Indexed
+    @Indexed // create a secondary index -- enable lookup operations; maintained on every save/update of an indexed object
     private String email;
 
     @NotNull
@@ -50,6 +50,6 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public void addRole(Role role) {
-        roles.add(role);
+        this.roles.add(role);
     }
 }

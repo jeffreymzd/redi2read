@@ -1,6 +1,6 @@
 package com.github.jeffreymzd.redi2read.repositories;
 
-import com.github.jeffreymzd.redi2read.models.Role;
+import com.github.jeffreymzd.redi2read.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
  * Created by jeffreymzd on 4/13/21
  */
 @Repository
-public interface RoleRepository extends CrudRepository<Role, String> {
+public interface UserRepository extends CrudRepository<User, String> {
 
-    Role findFirstByName(String role);
+    User findFirstByEmail(String email);
 
 }
